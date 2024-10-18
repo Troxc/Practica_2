@@ -1,6 +1,6 @@
 @extends('plantillas.plantilla')
 
-@section('contenido')
+@section('contenido1')
 
 <div class="d-flex justify-content-center align-items-center p-5">
 

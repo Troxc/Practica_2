@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\PlazaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PuestoController;
 use Illuminate\Support\Facades\Route;
 
 //Menus Inicio
@@ -31,6 +34,10 @@ Route::get('/proyects', function () {
 })->middleware(['auth', 'verified'])->name("proyectos");
 
 
+//VISTA CATALOGOS
+Route::resource('alumnos', AlumnoController::class)->middleware(['auth', 'verified']);
+Route::resource('puestos', PuestoController::class)->middleware(['auth', 'verified']);
+Route::resource('plazas', PlazaController::class)->middleware(['auth', 'verified']);
 
 /////////////////////////////////////////////////////////////////////////
 Route::middleware('auth')->group(function () {
