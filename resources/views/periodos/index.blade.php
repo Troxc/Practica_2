@@ -2,8 +2,8 @@
 
 
 @section('contenido1')
-    <h1>Alumnos</h1>
-    @include('alumnosV2/tablahtml')
+    <h2>Periodos</h2>
+    @include('periodos/tablahtml')
 @endsection
 
 @section('contenido2')

@@ -78,6 +78,18 @@
             </div>
         </div>
         <div class="mb-3 row">
+            <label for="carrera_id" class="col-4 col-form-label">CARTRE :</label>
+            <div class="col-8">
+                <select {{ $des }} name="carrera_id" id="carrera_id" class="form-control">
+                    @foreach ($carreras as $carrera)
+                        <option value="{{ $carrera->id }}" {{ isset($alumno) && $alumno->carrera_id == $carrera->id ? 'selected' : '' }}>
+                            {{ $carrera->nombreCarrera }}
+                        </option>
+                    @endforeach
+                </select>                
+            </div>
+        </div>
+        <div class="mb-3 row">
             <div class="offset-sm-4 col-sm-8 d-flex">
                 <button type="submit" class="btn {{ $color }} me-2">
                     {{ $btn }}

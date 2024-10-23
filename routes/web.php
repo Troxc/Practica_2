@@ -1,9 +1,14 @@
 <?php
 
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\CarreraController;
+use App\Http\Controllers\DeptoController;
+use App\Http\Controllers\MateriaController;
+use App\Http\Controllers\PeriodoController;
 use App\Http\Controllers\PlazaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PuestoController;
+use App\Http\Controllers\ReticulaController;
 use Illuminate\Support\Facades\Route;
 
 //Menus Inicio
@@ -35,6 +40,13 @@ Route::get('/proyects', function () {
 
 
 //VISTA CATALOGOS
+Route::resource('deptos', DeptoController::class)->middleware(['auth', 'verified']);
+Route::resource('carreras', CarreraController::class)->middleware(['auth', 'verified']);
+Route::resource('reticulas', ReticulaController::class)->middleware(['auth', 'verified']);
+Route::resource('materias', MateriaController::class)->middleware(['auth', 'verified']);
+
+Route::resource('periodos', PeriodoController::class)->middleware(['auth', 'verified']);
+
 Route::resource('alumnos', AlumnoController::class)->middleware(['auth', 'verified']);
 Route::resource('puestos', PuestoController::class)->middleware(['auth', 'verified']);
 Route::resource('plazas', PlazaController::class)->middleware(['auth', 'verified']);

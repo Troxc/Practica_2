@@ -3,22 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumno;
+use App\Models\Carrera;
 use Illuminate\Http\Request;
 
 class AlumnoController extends Controller
 {
 
     public $alumnos;
+    public $carreras;
     public $val;
     function __construct()
     {
         $this->alumnos = Alumno::paginate(5);
+        $this->carreras   = Carrera::get();
         $this->val = [
             'noctrl'    => 'required',
             'nombre'    => 'required',
             'apellidoP' => 'required',
             'apellidoM' => 'required',
-            'sexo'      => 'required'
+            'sexo'      => 'required',
+            'carrera_id'=>  'required'
         ];
     }
 
@@ -33,7 +37,7 @@ class AlumnoController extends Controller
     {
         //otra forma
         //$alumnos = Alumno::get();
-        return view('alumnosV2/frm', ['alumnos' => $this->alumnos, 'accion' => 'C', 'des' => '', 'btn' => 'INSERTAR', 'color' => 'btn-success']);
+        return view('alumnosV2/frm', ['alumnos' => $this->alumnos, 'carreras' => $this->carreras, 'accion' => 'C', 'des' => '', 'btn' => 'INSERTAR', 'color' => 'btn-success']);
     }
 
     public function store(Request $request)
@@ -45,12 +49,12 @@ class AlumnoController extends Controller
 
     public function show(Alumno $alumno)
     {
-        return view('alumnosV2/frm', ['alumnos' => $this->alumnos, "alumno" => $alumno, 'accion' => 'S', 'des' => 'disabled', 'btn' => 'ELIMINAR', 'color' => 'btn-danger']);
+        return view('alumnosV2/frm', ['alumnos' => $this->alumnos, "alumno" => $alumno, 'carreras' => $this->carreras, 'accion' => 'S', 'des' => 'disabled', 'btn' => 'ELIMINAR', 'color' => 'btn-danger']);
     }
 
     public function edit(Alumno $alumno)
     {
-        return view('alumnosV2/frm', ['alumnos' => $this->alumnos, "alumno" => $alumno, 'accion' => 'E', 'des' => '', 'btn' => 'EDITAR', 'color' => 'btn-warning']);
+        return view('alumnosV2/frm', ['alumnos' => $this->alumnos, "alumno" => $alumno, 'carreras' => $this->carreras, 'accion' => 'E', 'des' => '', 'btn' => 'EDITAR', 'color' => 'btn-warning']);
     }
 
     public function update(Request $request, Alumno $alumno)

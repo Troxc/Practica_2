@@ -19,7 +19,7 @@
                         <td>{{ $alumno->nombre }}</td>
                         <td>{{ $alumno->apellidoP }}</td>
                         <td>{{ $alumno->apellidoM }}</td>
-                        <td>{{  $alumno->sexo}}</td>
+                        <td>{{ $alumno->sexo}}</td>
                         <td>
                             <a class="btn btn-warning" href="{{ route('alumnos.edit', $alumno->id) }}">
                                 Editar
