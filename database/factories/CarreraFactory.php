@@ -2,27 +2,18 @@
 
 namespace Database\Factories;
 
+use App\Models\Carrera;
 use App\Models\Depto;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Carrera>
- */
 class CarreraFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    protected $model = Carrera::class;
+
+    public function definition()
     {
-        $titulo = fake()->jobTitle();
         return [
-            'idCarrera' => fake()->bothify("???###"),
-            'nombreCarrera' => $titulo,
-            'nombreMediano' => fake()->lexify(str_repeat("?",15)),
-            'nombreCorto' => substr($titulo,0,5),
+            'idCarrera' => $this->faker->unique()->bothify('CAR###'),
             'depto_id' => Depto::factory(),
         ];
     }

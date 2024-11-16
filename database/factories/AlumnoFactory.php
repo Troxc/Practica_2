@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Carrera;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Carrera;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Alumno>
@@ -22,8 +22,10 @@ class AlumnoFactory extends Factory
             'nombre' => fake()->name(),
             'apellidoP' => fake()->lastName(),
             'apellidoM' => fake()->lastName(),
+            'apellidoM' => fake()->lastName(),
             'sexo'      => fake()->randomElement(['M','F']),
-            'carrera_id'=>Carrera::factory()
+            'email' => fake()->email(),
+            'carrera_id'=>Carrera::factory(),
         ];
     }
 }

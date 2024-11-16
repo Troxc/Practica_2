@@ -4,7 +4,6 @@
         <table class="table table-striped table-hover table-borderless table-primary align-middle">
             <thead class="table-light">
                 <tr>
-                    <th>Id Periodo</th>
                     <th>Periodo</th>
                     <th>Des Corta</th>
                     <th>Fecha INI</th>
@@ -15,7 +14,6 @@
 
                 @foreach ($periodos as $periodo)
                     <tr class="table-primary">
-                        <td scope="row">{{ $periodo->idPeriodo }}</td>
                         <td>{{ $periodo->periodo }}</td>
                         <td>{{ $periodo->descCorta }}</td>
                         <td>{{ $periodo->fechaIni }}</td>

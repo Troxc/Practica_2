@@ -2,17 +2,20 @@
 
 namespace Database\Seeders;
 
-use App\Models\Puesto;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Puesto;
 
 class PuestoSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        Puesto::factory(10)->create();
+    
+        $tipos = ['Docente', 'Direccion', 'No Docente', 'Auxiliar', 'Administrativo'];
+
+        foreach ($tipos as $tipo) {
+            Puesto::factory()->count(3)->create([
+                'tipo' => $tipo,
+            ]);
+        }
     }
 }

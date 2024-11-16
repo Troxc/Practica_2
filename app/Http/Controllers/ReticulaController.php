@@ -17,9 +17,8 @@ class ReticulaController extends Controller
         $this->reticulas = Reticula::paginate(5);
         $this->carreras   = Carrera::get();
         $this->val = [
-            'idReticula'    => 'required',
             'descripcion'    => 'required',
-            'fechaEnVigor' => 'required',
+            'fechaVigor' => 'required',
             'carrera_id'=>  'required'
         ];
     }

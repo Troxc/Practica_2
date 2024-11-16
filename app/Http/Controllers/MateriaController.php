@@ -17,7 +17,6 @@ class MateriaController extends Controller
         $this->materias = Materia::paginate(5);
         $this->reticulas = Reticula::get();
         $this->val = [
-            'idMateria'      => 'required',
             'nombreMateria'  => 'required',
             'nivel'          => 'required',
             'nombreMediano'  => 'required',

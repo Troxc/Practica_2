@@ -28,16 +28,6 @@
 
         @csrf
         <div class="mb-3 row">
-            <label for="idMateria" class="col-4 col-form-label">ID Materia :</label>
-            <div class="col-8">
-                <input {{ $des }} type="text" class="form-control" name="idMateria" id="idMateria"
-                    placeholder="ID Materia" value="{{ @old('idMateria', $materia->idMateria ?? '') }}" />
-                @error('idMateria')
-                    <p style="color: red">Error en ID: {{ $message }}</p>
-                @enderror
-            </div>
-        </div>
-        <div class="mb-3 row">
             <label for="nombreMateria" class="col-4 col-form-label">Nombre de la Materia :</label>
             <div class="col-8">
                 <input {{ $des }} type="text" class="form-control" name="nombreMateria" id="nombreMateria"

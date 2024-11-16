@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('materias', function (Blueprint $table) {
             $table->id();
-            $table->string("idMateria", 10)->unique();
             $table->string("nombreMateria", 200);
-            $table->string("nivel", 1);
             $table->string("nombreMediano", 25);
             $table->string("nombreCorto", 10);
+            $table->string("nivel", 1);
             $table->string("modalidad", 1);
+            $table->string("semestre", 1);
             $table->foreignId('reticula_id')->constrained();
             $table->timestamps();
         });

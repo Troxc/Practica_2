@@ -3,9 +3,14 @@
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\CarreraController;
 use App\Http\Controllers\DeptoController;
+use App\Http\Controllers\EdificioController;
+use App\Http\Controllers\LugarController;
 use App\Http\Controllers\MateriaController;
+use App\Http\Controllers\MateriasAbiertasController;
 use App\Http\Controllers\PeriodoController;
+use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\PlazaController;
+use App\Http\Controllers\PlazaPersonalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PuestoController;
 use App\Http\Controllers\ReticulaController;
@@ -51,6 +56,15 @@ Route::resource('alumnos', AlumnoController::class)->middleware(['auth', 'verifi
 Route::resource('puestos', PuestoController::class)->middleware(['auth', 'verified']);
 Route::resource('plazas', PlazaController::class)->middleware(['auth', 'verified']);
 
+
+
+/////////NUEVAs 
+Route::resource('edificios', EdificioController::class)->middleware(['auth', 'verified']);
+Route::resource('lugares', LugarController::class)->parameters(['lugares' => 'lugar'])->middleware(['auth', 'verified']);
+Route::resource('personals', PersonalController::class)->parameters(['personals' => 'personal'])->middleware(['auth', 'verified']);
+Route::resource('personalPlazas', PlazaPersonalController::class)->middleware(['auth', 'verified']);
+Route::resource('materiasa', MateriasAbiertasController::class);
+
 /////////////////////////////////////////////////////////////////////////
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -58,4 +72,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

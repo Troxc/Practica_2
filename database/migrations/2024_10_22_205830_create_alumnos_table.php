@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("nombre", 50);
             $table->string("apellidoP", 50);
             $table->string("apellidoM", 50);
+            $table->string("email",200);
             $table->string('sexo',1);
             $table->foreignId('carrera_id')->constrained();
             $table->timestamps();

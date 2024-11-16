@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Reticula;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +12,6 @@ class ReticulaSeeder extends Seeder
      */
     public function run(): void
     {
-        Reticula::factory(10)->create();
+        //
     }
 }

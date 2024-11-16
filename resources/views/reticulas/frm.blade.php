@@ -28,16 +28,6 @@
 
         @csrf
         <div class="mb-3 row">
-            <label for="idReticula" class="col-4 col-form-label">ID Reticula :</label>
-            <div class="col-8">
-                <input {{ $des }} type="text" class="form-control" name="idReticula" id="idReticula"
-                    placeholder="ID Reticula" value="{{ @old('idReticula', $reticula->idReticula) }}" />
-                @error('idReticula')
-                    <p style="color: red">Error en ID: {{ $message }}</p>
-                @enderror
-            </div>
-        </div>
-        <div class="mb-3 row">
             <label for="descripcion" class="col-4 col-form-label">Descripcion :</label>
             <div class="col-8">
                 <input {{ $des }} type="text" class="form-control" name="descripcion" id="descripcion"
@@ -48,11 +38,11 @@
             </div>
         </div>
         <div class="mb-3 row">
-            <label for="fechaEnVigor" class="col-4 col-form-label">Fecha en Vigor :</label>
+            <label for="fechaVigor" class="col-4 col-form-label">Fecha en Vigor :</label>
             <div class="col-8">
-                <input {{ $des }} type="date" class="form-control" name="fechaEnVigor" id="fechaEnVigor"
-                    placeholder="Fecha en Vigor" value="{{ @old('fechaEnVigor', $reticula->fechaEnVigor) }}" />
-                @error('fechaEnVigor')
+                <input {{ $des }} type="date" class="form-control" name="fechaVigor" id="fechaVigor"
+                    placeholder="Fecha en Vigor" value="{{ @old('fechaVigor', $reticula->fechaVigor) }}" />
+                @error('fechaVigor')
                     <p style="color: red">Error en Fecha: {{ $message }}</p>
                 @enderror
             </div>

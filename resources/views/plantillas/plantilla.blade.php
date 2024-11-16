@@ -67,8 +67,8 @@
                 </div>
             @endauth
         </footer>
-
     </div>
+    
 </body>
 
 </html>

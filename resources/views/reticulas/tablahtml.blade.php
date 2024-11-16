@@ -4,7 +4,6 @@
         <table class="table table-striped table-hover table-borderless table-primary align-middle">
             <thead class="table-light">
                 <tr>
-                    <th>ID Reticula</th>
                     <th>Descripcion</th>
                     <th>Fecha en Vigor</th>
 
@@ -14,9 +13,8 @@
 
                 @foreach ($reticulas as $reticula)
                     <tr class="table-primary">
-                        <td scope="row">{{ $reticula->idReticula }}</td>
                         <td>{{ $reticula->descripcion }}</td>
-                        <td>{{ $reticula->fechaEnVigor }}</td>
+                        <td>{{ $reticula->fechaVigor }}</td>
                         <td>
                             <a class="btn btn-warning" href="{{ route('reticulas.edit', $reticula->id) }}">
                                 Editar

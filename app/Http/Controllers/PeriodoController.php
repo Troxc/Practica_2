@@ -13,7 +13,6 @@ class PeriodoController extends Controller
     {
         $this->periodos = Periodo::paginate(5);
         $this->val = [
-            'idPeriodo'  => 'required',
             'periodo'    => 'required',
             'descCorta'      => 'required',
             'fechaIni'      => 'required',

@@ -4,21 +4,18 @@
     <table class="table table-striped table-hover table-borderless table-primary align-middle">
         <thead class="table-light">
             <tr>
-                <th>ID Materia</th>
                 <th>Nombre de la Materia</th>
                 <th>Nivel</th>
                 <th>Nombre Mediano</th>
                 <th>Nombre Corto</th>
                 <th>Modalidad</th>
                 <th>Retícula</th>
-                <th>Acciones</th>
             </tr>
         </thead>
         <tbody class="table-group-divider">
 
             @foreach ($materias as $materia)
                 <tr class="table-primary">
-                    <td scope="row">{{ $materia->idMateria }}</td>
                     <td>{{ $materia->nombreMateria }}</td>
                     <td>{{ $materia->nivel }}</td>
                     <td>{{ $materia->nombreMediano }}</td>

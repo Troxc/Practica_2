@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('periodos', function (Blueprint $table) {
             $table->id();
-            $table->string('idPeriodo', 5);
             $table->string('periodo', 100);
             $table->string('descCorta', 10);
             $table->date('fechaIni');

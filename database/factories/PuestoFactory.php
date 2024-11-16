@@ -16,10 +16,12 @@ class PuestoFactory extends Factory
      */
     public function definition(): array
     {
+        $tipos = ['Docente', 'Direccion', 'No Docente', 'Auxiliar', 'Administrativo'];
+
         return [
-            'idPuesto'      => fake()->bothify("########"),
-            'nombre'  => fake()->jobTitle(),
-            'tipo'      => fake()->randomElement(['Docente','Adiministrativo', 'Director', 'Jefe de Departamento'])
+            'idPuesto' => $this->faker->bothify("???####"),
+            'nombre' => $this->faker->jobTitle(),
+            'tipo' => $this->faker->randomElement($tipos),
         ];
     }
 }

@@ -3,25 +3,19 @@
 namespace Database\Factories;
 
 use App\Models\Carrera;
+use App\Models\Reticula;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Reticula>
- */
 class ReticulaFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    protected $model = Reticula::class;
+
+    public function definition()
     {
         return [
-            'idReticula' => fake()->bothify("?#?#?"),
-            'descripcion' => fake()->catchPhrase(),
-            'fechaEnVigor' => fake()->date(),
-            'carrera_id'=>Carrera::factory()
+            'descripcion' => $this->faker->sentence(2),
+            'fechaVigor' => $this->faker->date(),
+            'carrera_id' => Carrera::factory(),
         ];
     }
 }
