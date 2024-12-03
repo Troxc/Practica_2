@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carrera;
+use App\Models\Depto;
+use App\Models\Edificio;
 use App\Models\Materia;
 use App\Models\Reticula;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MateriaController extends Controller
 {
@@ -28,7 +32,9 @@ class MateriaController extends Controller
 
     public function index()
     {
-        return view("materias/index", ['materias' => $this->materias]);
+        //$carreras = Carrera::get();
+        $carreras = Materia::with('reticula.carrera')->get()->pluck('reticula.carrera')->unique();
+        return view("materias/index", ['materias' => $this->materias, 'carreras' => $carreras]);
     }
 
     public function create()

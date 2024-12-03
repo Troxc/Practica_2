@@ -16,4 +16,9 @@ class Alumno extends Model
     {
         return $this->belongsTo(Carrera::class);
     }
+
+    public function alumnoGrupos()
+    {
+        return $this->hasMany(alumnoGrupo::class);
+    }
 }

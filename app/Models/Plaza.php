@@ -11,7 +11,7 @@ class Plaza extends Model
     /** @use HasFactory<\Database\Factories\PlazaFactory> */
     use HasFactory;
 
-    protected $fillable = ['idPlaza', 'nombrePlaza'];
+    protected $fillable = ['idPlaza', 'nombrePlaza', 'archivo'];
 
     public function  personalPlazas(): HasMany
     {

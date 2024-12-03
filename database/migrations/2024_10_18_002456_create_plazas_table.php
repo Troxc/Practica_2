@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('idPlaza', 25)->unique();
             $table->string('nombrePlaza',200);
+            $table->longText('archivo')->nullable();
             $table->timestamps();
         });
     }

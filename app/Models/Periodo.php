@@ -17,4 +17,25 @@ class Periodo extends Model
     {
         return $this->hasMany(MateriasAbiertas::class);
     }
+
+    public function fechaSeguimientos(): HasMany
+    {
+        return $this->hasMany(FechaSeguimiento::class);
+    }
+
+
+    public function grupos(): HasMany
+    {
+        return $this->hasMany(Grupo::class);
+    }
+
+    public function grupo17126s(): HasMany
+    {
+        return $this->hasMany(Grupo17126::class);
+    }
+
+    public function tutores(): HasMany
+    {
+        return $this->hasMany(Tutores::class);
+    }
 }

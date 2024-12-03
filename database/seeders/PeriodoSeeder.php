@@ -16,3 +16,4 @@ class PeriodoSeeder extends Seeder
         Periodo::factory(7)->create();
     }
 }
+ 

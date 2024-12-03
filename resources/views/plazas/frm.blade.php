@@ -11,18 +11,18 @@
 
         @if ($accion == 'C')
             <h1>Insertando</h1>
-            <form action="{{ route('plazas.store') }}" method="POST">
+            <form action="{{ route('plazas.store') }}" method="POST" enctype="multipart/form-data">
         @endif
 
         @if ($accion == 'E')
             <h1>Editando</h1>
-            <form action="{{ route('plazas.update', $plaza->id) }}" method="POST">
+            <form action="{{ route('plazas.update', $plaza->id) }}" method="POST" enctype="multipart/form-data">
                 @method('PUT')
         @endif
 
         @if ($accion == 'S')
             <h1>Eliminando</h1>
-            <form action="{{ route('plazas.destroy', $plaza->id) }}" method="POST">
+            <form action="{{ route('plazas.destroy', $plaza->id) }}" method="POST" enctype="multipart/form-data">
                 @method('DELETE')
         @endif
 
@@ -37,6 +37,23 @@
                 @enderror
             </div>
         </div>
+
+        <div class="mb-3 row">
+            <label for="archivo" class="col-4 col-form-label">Archivo :</label>
+            <div class="col-8">
+                <input {{ $des }} type="file" class="form-control" name="archivo" id="archivo" />
+                @if (isset($plaza) && $plaza->archivo)
+                    <a href="{{ route('plazas.showFile', $plaza->id) }}" target="_blank" class="btn btn-sm btn-info mt-2">
+                        Ver Archivo Actual
+                    </a>
+                @endif
+
+                @error('archivo')
+                    <p style="color: red">Error en el Archivo: {{ $message }}</p>
+                @enderror
+            </div>
+        </div>
+
         <div class="mb-3 row">
             <label for="nombrePlaza" class="col-4 col-form-label">Nombre de Plaza :</label>
             <div class="col-8">

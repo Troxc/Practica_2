@@ -29,4 +29,14 @@ class Personal extends Model
     {
         return $this->belongsTo(Puesto::class);
     }
+
+    public function grupos(): HasMany
+    {
+        return $this->hasMany(Grupo::class);
+    }
+
+    public function grupo17126s(): HasMany
+    {
+        return $this->hasMany(Grupo17126::class);
+    }
 }

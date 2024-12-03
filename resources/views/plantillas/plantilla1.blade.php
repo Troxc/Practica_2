@@ -30,7 +30,7 @@
                             <a class="nav-link text-white fw-bold" href="#">INSTRUMENTACION</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white fw-bold" href="#">TUTORIAS</a>
+                            <a class="nav-link text-white fw-bold" href="{{ route('tutorias') }}">TUTORIAS</a>
                         </li>
                         <li class="nav-item ms-2">
                             <select class="form-select">

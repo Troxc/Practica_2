@@ -42,5 +42,10 @@
         </tfoot>
     </table>
     <a class="btn btn-primary" href="{{ route('materias.create') }}">Nuevo</a>
+    <select name="" id="">
+        @foreach ($carreras as $carrera)
+            <option value="">{{ $carrera->nombreCarrera}}</option>
+        @endforeach
+    </select>
     {{ $materias->links() }}
 </div>

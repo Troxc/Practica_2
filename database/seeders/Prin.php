@@ -19,7 +19,10 @@ class Prin extends Seeder
             PeriodoSeeder::class,    
             EdificioSeeder::class,   
             PersonalSeeder::class,
-            PlazaPersonalSeeder::class   
+            PlazaPersonalSeeder::class,
+            Grupo17126Seeder::class,
+            AlumnoGrupoSeeder::class,
+            SeguimientoSeeder::class
         ]);
     }
 }
