@@ -16,9 +16,11 @@ return new class extends Migration
             $table->string('grupo', 10)->unique();
             $table->string('descripcion', 200);
             $table->integer('maxAlumnos');
+            $table->date('fecha');
             $table->foreignId('materia_id')->nullable()->constrained();
             $table->foreignId('periodo_id')->constrained();
             $table->foreignId('personal_id')->nullable()->constrained();
+            $table->foreignId('carrera_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

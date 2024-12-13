@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'rol',
+        'personal_id'
     ];
 
     /**
@@ -45,4 +47,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function personal()
+{
+    return $this->belongsTo(Personal::class, 'personal_id'); // 'personal_id' es la clave foránea
+}
 }

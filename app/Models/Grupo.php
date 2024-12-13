@@ -11,7 +11,7 @@ class Grupo extends Model
     /** @use HasFactory<\Database\Factories\GrupoFactory> */
     use HasFactory;
 
-    protected $fillable = ['grupo', 'descripcion', 'maxAlumnos', 'periodo_id', 'materia_id', 'personal_id'];
+    protected $fillable = ['grupo', 'descripcion', 'maxAlumnos', 'periodo_id', 'materia_id', 'personal_id', 'fecha',    'carrera_id'];
 
     public function grupoHorarios(): HasMany
     {

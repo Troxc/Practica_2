@@ -96,7 +96,9 @@ class GrupoController extends Controller
                     'grupo' => $this->InNombre,
                     'descripcion' => $this->InDes,
                     'maxAlumnos' => $this->InMaxA,
-                    'periodo_id' => $this->periodo_idG
+                    'fecha' => $this->InFecha,
+                    'periodo_id' => $this->periodo_idG,
+                    'carrera_id' => $this->carrera_idG
                 ]);
                 return redirect(route("grupoHorarios.index"));
             } else {

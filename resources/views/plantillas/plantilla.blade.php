@@ -72,3 +72,12 @@
 </body>
 
 </html>
+
+<script>
+    function setLastChecked(checkbox) {
+        // Asigna el valor del último checkbox marcado a un campo oculto
+        document.getElementById('last_selected').value = checkbox.value;
+
+        checkbox.form.submit();
+    }
+</script>

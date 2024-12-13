@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('grupo_horarios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('grupo_id')->constrained();
+            $table->foreignId('grupo_id')->constrained()->onDelete('cascade');
             $table->timestamps();
             $table->foreignId('lugar_id')->constrained();
             $table->tinyInteger('dia');

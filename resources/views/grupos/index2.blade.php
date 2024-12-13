@@ -50,118 +50,146 @@
         </div>
         <div class="row">
             <div class="col text-center">
-                <a name="" id="" class="btn btn-danger" href="{{ route('grupos.index') }}"
+                <a name="" id="" class="btn btn-danger" href="{{ route('grupoHorarios.vaciarS') }}"
                     role="button">Finalizar Horario</a>
 
             </div>
         </div>
         <hr><br>
+        {{-- SELECT DE SEMESTRE-MATERIAS --}}
         <div class="row">
-{{--             <div class="col-md-2">
-                 <form method="GET" action="{{ route('grupoHorarios.index') }}"> 
+            <div class="col-md-2">
+                <form method="GET" action="{{ route('grupoHorarios.index') }}">
                     <select id="semestre" name="semestre" class="form-select mb-2" onchange="this.form.submit()">
                         <option value="-1">Seleccione Semestre</option>
                         @for ($i = 1; $i <= 9; $i++)
-                            <option value="{{ $i }}" {{ request('semestre') == $i ? 'selected' : '' }}>
+                            <option value="{{ $i }}" {{ session('semestrePruebas') == $i ? 'selected' : '' }}>
                                 Semestre
                                 {{ $i }}</option>
                         @endfor
                     </select>
-                 </form> 
-                  <form id="materia-form" action="{{ route('grupoHorarios.store') }}" method="POST"> 
-                    @csrf 
+                </form>
+                <form id="materia-form" action="{{ route('grupoHorarios.store') }}" method="POST">
+                    @csrf
                     <div class="list-group">
                         @foreach ($materias as $materia)
-                            @if ($materia->semestre == request('semestre'))
+                            @if ($materia->semestre == session('semestrePruebas'))
                                 <label class="list-group-item">
-                                    <input class="form-check-input me-2" type="radio" name="materia" value="{{ $materia->id }}"
-                                    onchange="document.getElementById('materia-form').submit()" @if ($gp->firstWhere('materia_id', $materia->id)) checked @endif>
+                                    <input class="form-check-input me-2" type="radio" name="materia"
+                                        value="{{ $materia->id }}"
+                                        onchange="document.getElementById('materia-form').submit()"
+                                        @if ($gp->firstWhere('materia_id', $materia->id)) checked @endif>
                                     {{ $materia->nombreMateria }}
                                 </label>
                             @endif
                         @endforeach
                     </div>
-                  </form>  
-                @foreach ($prueba1M as $item)
-                    @if ($item->grupo == session("InNombre"))
-                        {{ $item->grupo}} y {{$item->materia_id}}
-                    @endif
-                @endforeach
-            </div> --}}
-             <div class="col-md-3">
+                </form>
+            </div>
+            {{-- SELECT DE DEPARTAMENTOS-PERSONAL --}}
+            <div class="col-md-3">
                 <form method="GET" action="{{ route('grupoHorarios.index') }}">
                     <select id="depto" name="depto" class="form-select mb-2" onchange="this.form.submit()">
                         <option value="-1">Seleccione Departamento</option>
                         @foreach ($deptos as $depto)
-                            <option value="{{$depto->id}}" {{ request('depto') == $depto->id ? 'selected' : '' }} >{{$depto->nombreDepto}}</option>
+                            <option value="{{ $depto->id }}"
+                                {{ session('deptoPruebas') == $depto->id ? 'selected' : '' }}>{{ $depto->nombreDepto }}
+                            </option>
                         @endforeach
                     </select>
                 </form>
-                <form id="profe-form" action="{{ route('grupoHorarios.store') }}" method="POST"> 
+                <form id="profe-form" action="{{ route('grupoHorarios.store') }}" method="POST">
                     @csrf
-                <div class="list-group">
-                    @foreach ($personal as $persona)
-                    @if ($persona->depto_id == request('depto'))
-                        <label class="list-group-item">
-                            <input class="form-check-input me-2" type="radio" name="persona" value="{{ $persona->id }}"
-                            onchange="document.getElementById('profe-form').submit()"  @if ($gp->firstWhere('personal_id', $persona->id)) checked @endif>
-                            {{ $persona->nombres }}
-                        </label>
-                    @endif
-                @endforeach
-                </div>
-            </form> 
+                    <div class="list-group">
+                        @foreach ($personal as $persona)
+                            @if ($persona->depto_id == session('deptoPruebas'))
+                                <label class="list-group-item">
+                                    <input class="form-check-input me-2" type="radio" name="persona"
+                                        value="{{ $persona->id }}"
+                                        onchange="document.getElementById('profe-form').submit()"
+                                        @if ($gp->firstWhere('personal_id', $persona->id)) checked @endif>
+                                    {{ $persona->nombres }}
+                                </label>
+                            @endif
+                        @endforeach
+                    </div>
+                </form>
             </div>
-
+            {{-- SELECT DE EDIFICIOS --}}
             <div class="col-md-3">
-                <select class="form-select mb-2">
-                    <option>Edificio K</option>
-                    <option>Edificio D</option>
-                </select>
-                <div class="list-group">
-                    <label class="list-group-item">
-                        <input class="form-check-input me-2" type="radio" name="edificio"> Salón K1
-                    </label>
-                    <label class="list-group-item">
-                        <input class="form-check-input me-2" type="radio" name="edificio"> Salón K2
-                    </label>
-                    <label class="list-group-item">
-                        <input class="form-check-input me-2" type="radio" name="edificio"> Salón K3
-                    </label>
+                <form method="GET" id="edificio-form" action="{{ route('grupoHorarios.index') }}">
+                    <select id="edificio" name="edificio" class="form-select mb-2" onchange="document.getElementById('edificio-form').submit()">
+                        <option value="-1">Seleccione un Edificio</option>
+                        @foreach ($edificios as $edificio)
+                            <option value="{{ $edificio->id }}"
+                                {{ session('edificioPruebas') == $edificio->id ? 'selected' : '' }}>{{ $edificio->nombreEdificio }}
+                            </option>
+                        @endforeach
+                    </select>
+                </form>
+                <form id="lugar-form" action="{{ route('grupoHorarios.apoyo') }}" method="POST">
+                    @csrf
+                    <div class="list-group">
+                        @foreach ($lugares as $lugar)
+                            @if ($lugar->edificio_id == session('edificioPruebas'))
+                                <label class="list-group-item">
+                                    <input class="form-check-input me-2" type="radio" name="lugar"
+                                        value="{{ $lugar->id }}"
+                                        
+                                        @if ($gH->firstWhere('lugar_id', $lugar->id)) checked @endif>
+                                    {{ $lugar->nombreLugar }}
+                                </label>
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-md-4">
-                <h5>Horario</h5>
-                <table class="table table-bordered text-center">
-                    <thead>
-                        <tr>
-                            <th>L</th>
-                            <th>M</th>
-                            <th>Mi</th>
-                            <th>J</th>
-                            <th>V</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>7<input type="checkbox"></td>
-                            <td><input type="checkbox"></td>
-                            <td><input type="checkbox"></td>
-                            <td><input type="checkbox"></td>
-                            <td><input type="checkbox"></td>
-                        </tr>
-                        <tr>
-                            <td>8<input type="checkbox"></td>
-                            <td><input type="checkbox"></td>
-                            <td><input type="checkbox"></td>
-                            <td><input type="checkbox"></td>
-                            <td><input type="checkbox"></td>
-                        </tr>
-                        <!-- Add more rows as needed -->
-                    </tbody>
-                </table>
-            </div>
+                <div class="col-md-4">
+                    <h5>Horario</h5>
+                    <table class="table table-bordered text-center">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>L</th>
+                                    <th>M</th>
+                                    <th>Mi</th>
+                                    <th>J</th>
+                                    <th>V</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for ($hour = 7; $hour <= 10; $hour++) 
+                                    <tr>
+                                        @for ($day = 1; $day < 6; $day++)
+                                            <td>
+                                                @if ($day === 1)
+                                                    {{ $hour }}
+                                                @endif
+                                                @php
+                                                    // Formatear la hora en el mismo formato que en la base de datos (H:i:s)
+                                                    $formattedHour = \Carbon\Carbon::createFromTime($hour, 0, 0)->format('H:i:s');
+                                                    
+                                                    // Comprobar si el checkbox debe estar marcado
+                                                    $isChecked = $paraselect->contains(function ($item) use ($day, $formattedHour) {
+                                                        return $item->dia == $day && $item->hora == $formattedHour;
+                                                    });
+                                                @endphp
+                                                {{-- @dd($paraselect) --}}
+                                                <input type="checkbox" 
+                                                       value="{{ $day }}{{ $hour }}" 
+                                                       onclick="setLastChecked(this)" 
+                                                       {{ $isChecked ? 'checked' : '' }}>
+                                            </td>
+                                        @endfor
+                                    </tr>
+                                @endfor
+                            </tbody>
+                        </table>
+                        
+                </div>
+                <input type="hidden" name="last_selected" id="last_selected">
+                </form>
+            
+            
         </div> <br>
 
 

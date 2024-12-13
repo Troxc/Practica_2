@@ -33,9 +33,4 @@ class Periodo extends Model
     {
         return $this->hasMany(Grupo17126::class);
     }
-
-    public function tutores(): HasMany
-    {
-        return $this->hasMany(Tutores::class);
-    }
 }

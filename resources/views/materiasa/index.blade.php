@@ -3,21 +3,12 @@
 @section('contenido')
     <div class="row align-items-center">
         <div class="col-md-6 d-flex align-items-center">
-            <a
-                name=""
-                id=""
-                class="btn btn-warning"
-                href="{{route("materiasa.vacio")}}"
-                role="button"
-                >Terminar</a
-            >
-            
+
             <h3 class="mt-3">Apertura de Materias</h3>
         </div>
         <div class="col-md-6">
             {{-- Formulario de filtros --}}
             <form action="{{ route('materiasa.index') }}" method="get" class="text-end">
-                <input type="text" name="idTexto" onchange="this.form.submit()" value="{{ session('idTexto') }}">
                 <div class="mb-3 mt-3">
                     <label for="idperiodo" class="form-label">Periodo:</label>
                     <select name="idperiodo" id="idperiodo" class="form-select d-inline-block w-auto" onchange="this.form.submit()">
